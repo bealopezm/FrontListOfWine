@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class WineCellarService {
-
-  constructor() { }
+  baseUrl: string;
+  constructor() {
+    this.baseUrl = 'http://localhost:3000/api/wineCellar';
+  }
 }

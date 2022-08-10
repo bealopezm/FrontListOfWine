@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GrapeService {
+  baseUrl: string;
 
-  constructor() { }
+  constructor() {
+    this.baseUrl = 'http://localhost:3000/api/grape';
+  }
 }
