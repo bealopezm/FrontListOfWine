@@ -1,14 +1,17 @@
 <div class="container">
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
       <label for="email" class="form-label">Email</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" formControlName="email">
     </div>
     <div>
       <label for="password" class="form-label">Contraseña</label>
-      <input type="password" class="form-control">
+      <input type="password" class="form-control" formControlName="password" autocomplete="on">
     </div>
     <button type="submit" class="btn">Acceder</button>
-    <a href="#">Olvidé la contraseña</a>
+    <div>
+      <a [routerLink]="['/newPassword']" class="me-3">Olvidé la contraseña</a>
+      <a [routerLink]="['/newUser']">Registro</a>
+    </div>
   </form>
 </div>
