@@ -11,8 +11,9 @@
           <a class="nav-link active" aria-current="page" [routerLink]="['/newWine']">Nuevo vino</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/user']">Perfil</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/allWines']">Todos los Vinos</a>
         </li>
+
         <!--         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -26,14 +27,20 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>-->
-        <li class="nav-item">
-          <a class="nav-link" (click)="onClickLogOut()">Cerrar sesión</a>
-        </li>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar vino" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Añadir</button>
       </form>
+      <ul class="navbar-nav ms-4">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/user']">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="onClickLogOut()">Cerrar sesión</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

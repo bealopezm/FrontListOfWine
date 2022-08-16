@@ -1,1 +1,17 @@
-<p>card-wine works!</p>
+<div class="card" style="width: 18rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{wine?.name}}</h5>
+    <p class="card-text">{{type?.name}}
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{wine?.elaborationArea}}</li>
+    <li class="list-group-item">{{origin?.type}} {{origin?.name}}</li>
+    <li class="list-group-item">{{wineCellar?.name}}</li>
+  </ul>
+  <div class="card-body">
+    <i class="{{tasted}}"></i>
+    <i class="bi bi-heart"></i>
+  </div>
+</div>

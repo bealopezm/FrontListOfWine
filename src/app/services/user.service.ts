@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,14 @@ export class UserService {
     );
   }
 
-  getUserLoged(): Promise<any> {
+  getUserLoged(): Promise<User> {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': localStorage.getItem('token')!
       })
     }
     const response = lastValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/userLoged/id`, httpOptions)
+      this.httpClient.get<User>(`${this.baseUrl}/userLoged/id`, httpOptions)
     );
     return response
   }

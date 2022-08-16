@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'user', component: InfoUserComponent },
   { path: 'wine', component: InfoWineComponent },
   { path: 'listWine', component: ListWineComponent },
+  { path: 'allWines', component: ListWineComponent },
   { path: 'newPassword', component: NewPasswordComponent },
   { path: 'recoverPassword', component: RecoverPasswordComponent },
 
