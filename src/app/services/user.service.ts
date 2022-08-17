@@ -29,4 +29,24 @@ export class UserService {
     );
     return response
   }
+
+  recoverPassword(pForm: any): Promise<any> {
+    const response = lastValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/recoverPassword`, pForm)
+    );
+    return response
+  }
+
+  updatePassword(pToken: any, pForm: any): Promise<any> {
+    const response = lastValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/password/${pToken}`, pForm)
+    );
+    return response
+  }
+  register(pForm: User): Promise<any> {
+    const response = lastValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/register`, pForm)
+    );
+    return response
+  }
 }

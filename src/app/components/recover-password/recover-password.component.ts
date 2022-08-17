@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recover-password',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecoverPasswordComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  constructor(
+    private userService: UserService
+  ) {
+    this.form = new FormGroup({
+      email: new FormControl('', [])
+    })
+  }
 
   ngOnInit(): void {
   }
-
+  onSubmit() {
+    console.log(this.form.value)
+    this.userService.recoverPassword(this.form.value)
+      .then(response => {
+        if (response.message) {
+          Swal.fire(response.message)
+        } else {
+          Swal.fire(
+            'Oops...',
+            response.err,
+            'error'
+          )
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
 }

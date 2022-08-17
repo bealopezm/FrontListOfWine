@@ -12,6 +12,18 @@ export class OriginService {
     this.baseUrl = 'http://localhost:3000/api/origin';
   }
 
+  getAll(): Promise<Origin[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.get<Origin[]>(`${this.baseUrl}`, httpOptions)
+    );
+    return response
+  }
+
   getById(pId: number): Promise<Origin> {
     const httpOptions = {
       headers: new HttpHeaders({

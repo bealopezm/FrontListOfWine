@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'wine/:id', component: InfoWineComponent },
   { path: 'listWine', component: ListWineComponent },
   { path: 'allWines', component: AllWinesComponent },
-  { path: 'newPassword', component: NewPasswordComponent },
+  { path: 'password/:token', component: NewPasswordComponent },
   { path: 'recoverPassword', component: RecoverPasswordComponent },
 
   { path: '**', redirectTo: '/home' }

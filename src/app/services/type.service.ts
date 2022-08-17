@@ -12,6 +12,17 @@ export class TypeService {
     this.baseUrl = 'http://localhost:3000/api/type';
   }
 
+  getAll(): Promise<Type[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.get<Type[]>(`${this.baseUrl}`, httpOptions)
+    );
+    return response
+  }
   getById(pId: number): Promise<Type> {
     const httpOptions = {
       headers: new HttpHeaders({
