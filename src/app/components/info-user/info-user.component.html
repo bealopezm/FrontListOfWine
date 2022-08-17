@@ -1,1 +1,5 @@
-<p>info-user works!</p>
+<div class="container">
+  <p>Nombre: {{user?.name}}</p>
+  <a [routerLink]="['/newPassword']" class="me-3">Nueva contraseña</a>
+  <a (click)="deleteUser()" class="me-3">Eliminar Cuenta</a>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-info-user',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoUserComponent implements OnInit {
 
-  constructor() { }
+  user: User | any;
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.userService.getUserLoged()
+      .then(response => {
+        this.user = response
+      })
+      .catch(error => console.log(error));
   }
 
+  deleteUser() {
+
+  }
 }

@@ -6,7 +6,7 @@
   <section class="col-8">
     <h2>Mi lista de vinos</h2>
     <article *ngFor="let wine of wines">
-      <app-card-wine [miWine]="wine" (deleteId)="deleteWineHasUser($event)"></app-card-wine>
+      <app-card-wine [miWine]="wine"></app-card-wine>
     </article>
   </section>
 </div>

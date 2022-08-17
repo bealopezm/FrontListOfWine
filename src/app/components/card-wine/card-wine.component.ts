@@ -1,12 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Origin } from 'src/app/interfaces/origin';
 import { Type } from 'src/app/interfaces/type';
 import { Wine } from 'src/app/interfaces/wine';
 import { WineCellar } from 'src/app/interfaces/wine-cellar';
 import { WineHasUser } from 'src/app/interfaces/wine-has-user';
-import { OriginService } from 'src/app/services/origin.service';
-import { TypeService } from 'src/app/services/type.service';
-import { WineCellarService } from 'src/app/services/wine-cellar.service';
+import { WineHasUserService } from 'src/app/services/wine-has-user.service';
 import { WineService } from 'src/app/services/wine.service';
 
 @Component({
@@ -17,43 +15,68 @@ import { WineService } from 'src/app/services/wine.service';
 export class CardWineComponent implements OnInit {
 
   @Input() miWine: WineHasUser | any;
+  @Output() deleteId: EventEmitter<number>;
   wine: Wine | any;
-  origin: Origin | any;
-  type: Type | any;
-  wineCellar: WineCellar | any;
   favorite: string;
-  tasted: string;
+  taste: string;
 
   constructor(
     private wineService: WineService,
-    private originService: OriginService,
-    private typeService: TypeService,
-    private wineCellarService: WineCellarService
+    private wineHasUserService: WineHasUserService
   ) {
-    this.tasted = '';
+    this.taste = '';
     this.favorite = '';
+    this.deleteId = new EventEmitter();
   }
 
   async ngOnInit(): Promise<void> {
     try {
-      console.log(this.miWine)
-      this.wine = await this.wineService.getById(this.miWine.Wine_id)
-      console.log(this.wine)
-      this.origin = await this.originService.getById(this.wine.Origin_id)
-      console.log(this.origin)
-      this.type = await this.typeService.getById(this.wine.Type_id)
-      console.log(this.type)
-      this.wineCellar = await this.wineCellarService.getById(this.wine.WineCellar_id)
-      console.log(this.wineCellar)
-
-      this.tasted = this.miWine.tasted ? 'bi bi-check-lg' : 'bi bi-x'
-      console.log(typeof (this.miWine.tasted))
-      this.favorite = this.miWine.favorite ? 'bi-heart-fill' : 'bi-heart'
-      console.log(this.favorite)
-
+      if (this.miWine.favorite === undefined) {
+        this.wine = await this.wineService.getById(this.miWine.id)
+      } else {
+        this.wine = await this.wineService.getById(this.miWine.Wine_id)
+        this.icontaste();
+        this.iconFavorite();
+      }
     } catch (err) {
       console.log(err)
     }
+  }
+
+  async isTasted() {
+    try {
+      this.miWine.taste = !this.miWine.taste
+      await this.wineHasUserService.updateTaste(this.miWine.taste, this.miWine.id)
+      this.miWine = await this.wineHasUserService.getById(this.miWine.id)
+      this.icontaste();
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
+  async isFavorite() {
+    try {
+      this.miWine.favorite = !this.miWine.favorite
+      await this.wineHasUserService.updateFavorite(this.miWine.favorite, this.miWine.id)
+      this.miWine = await this.wineHasUserService.getById(this.miWine.id)
+      //console.log(this.miWine)
+      this.iconFavorite();
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  async delete() {
+    return this.deleteId.emit(this.miWine.id)
+  }
+
+  icontaste() {
+    return this.taste = this.miWine.taste ? 'bi bi-check-lg' : 'bi bi-x'
+  }
+
+  iconFavorite() {
+    return this.favorite = this.miWine.favorite ? 'bi-heart-fill' : 'bi-heart'
   }
 
 }

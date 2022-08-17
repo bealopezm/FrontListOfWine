@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AllWinesComponent } from './components/all-wines/all-wines.component';
 import { FormUserComponent } from './components/form-user/form-user.component';
 import { FormWineComponent } from './components/form-wine/form-wine.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,9 +19,9 @@ const routes: Routes = [
   { path: 'newWine', component: FormWineComponent },
   { path: 'updateWine', component: FormWineComponent },
   { path: 'user', component: InfoUserComponent },
-  { path: 'wine', component: InfoWineComponent },
+  { path: 'wine/:id', component: InfoWineComponent },
   { path: 'listWine', component: ListWineComponent },
-  { path: 'allWines', component: ListWineComponent },
+  { path: 'allWines', component: AllWinesComponent },
   { path: 'newPassword', component: NewPasswordComponent },
   { path: 'recoverPassword', component: RecoverPasswordComponent },
 

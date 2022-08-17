@@ -23,4 +23,51 @@ export class WineHasUserService {
     );
     return response
   }
+  updateTaste(ptaste: boolean, pId: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/taste/${pId}`, { taste: ptaste }, httpOptions)
+    );
+    return response
+  }
+
+  updateFavorite(pfavorite: boolean, pId: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/favorite/${pId}`, { favorite: pfavorite }, httpOptions)
+    );
+    return response
+  }
+
+  getById(pId: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/${pId}`, httpOptions)
+    );
+    return response
+  }
+
+  delete(pId: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/${pId}`, httpOptions)
+    );
+    return response
+  }
 }

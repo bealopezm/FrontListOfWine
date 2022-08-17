@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { WineHasUser } from 'src/app/interfaces/wine-has-user';
 import { UserService } from 'src/app/services/user.service';
@@ -13,6 +14,7 @@ export class ListWineComponent implements OnInit {
 
   wines: WineHasUser[];
   user: User | any;
+  deleteId: number | any;
 
   constructor(
     private wineHasUserService: WineHasUserService,
@@ -30,6 +32,12 @@ export class ListWineComponent implements OnInit {
       console.log(err)
     }
 
+  }
+
+  async deleteWineHasUser($event: number) {
+    console.log($event)
+    await this.wineHasUserService.delete($event)
+    this.wines = await this.wineHasUserService.listWineUser(this.user.id)
   }
 
 }

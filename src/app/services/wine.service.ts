@@ -12,6 +12,17 @@ export class WineService {
     this.baseUrl = 'http://localhost:3000/api/wine';
   }
 
+  getAll(): Promise<Wine[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.get<Wine[]>(`${this.baseUrl}`, httpOptions)
+    );
+    return response
+  }
   getById(pId: number): Promise<Wine> {
     const httpOptions = {
       headers: new HttpHeaders({

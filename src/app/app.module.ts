@@ -15,6 +15,7 @@ import { InfoUserComponent } from './components/info-user/info-user.component';
 import { FormUserComponent } from './components/form-user/form-user.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
+import { AllWinesComponent } from './components/all-wines/all-wines.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
     InfoUserComponent,
     FormUserComponent,
     NewPasswordComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    AllWinesComponent
   ],
   imports: [
     BrowserModule,
