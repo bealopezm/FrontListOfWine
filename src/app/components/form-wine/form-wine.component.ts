@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Origin } from 'src/app/interfaces/origin';
 import { Type } from 'src/app/interfaces/type';
@@ -32,12 +32,12 @@ export class FormWineComponent implements OnInit {
     this.wineCellars = [];
     this.origins = [];
     this.form = new FormGroup({
-      name: new FormControl('', []),
-      photo: new FormControl('', []),
-      elaborationArea: new FormControl('', []),
-      Type_id: new FormControl('', []),
-      WineCellar_id: new FormControl('', []),
-      Origin_id: new FormControl('', [])
+      name: new FormControl('', [Validators.required]),
+      photo: new FormControl('', [Validators.required]),
+      elaborationArea: new FormControl('', [Validators.required]),
+      Type_id: new FormControl('', [Validators.required]),
+      WineCellar_id: new FormControl('', [Validators.required]),
+      Origin_id: new FormControl('', [Validators.required])
     })
   }
 

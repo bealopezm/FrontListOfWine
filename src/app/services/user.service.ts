@@ -49,4 +49,30 @@ export class UserService {
     );
     return response
   }
+
+  updateStatus(pId: number, pIsActive: boolean): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/status/${pId}`, { isActive: pIsActive }, httpOptions)
+    );
+    return response
+  }
+
+  getByEmail(pEmail: any): Promise<any> {
+    const response = lastValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/email/${pEmail}`)
+    );
+    return response
+  }
+
+  updateByEmail(pForm: any, pIsActive: boolean): Promise<any> {
+    const response = lastValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/recoverUser`, { ...pForm, isActive: pIsActive })
+    );
+    return response
+  }
 }

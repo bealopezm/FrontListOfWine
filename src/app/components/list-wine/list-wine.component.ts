@@ -35,12 +35,13 @@ export class ListWineComponent implements OnInit {
   }
 
   async deleteWineHasUser($event: number) {
-    await this.wineHasUserService.delete($event)
-    this.wines = await this.wineHasUserService.listWineUser(this.user.id)
+    try {
+      await this.wineHasUserService.delete($event)
+      this.wines = await this.wineHasUserService.listWineUser(this.user.id)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
-  addWineHasUser($event: any) {
-
-  }
 
 }

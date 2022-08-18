@@ -41,8 +41,8 @@ export class NavbarComponent implements OnInit {
     } catch (err) {
       console.log(err)
     }
-
   }
+
   onClickLogOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
