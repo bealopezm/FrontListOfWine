@@ -1,5 +1,6 @@
 <div class="container">
   <p>Nombre: {{user?.name}}</p>
+  <h6 class="icon" routerLink="/user/{{user?.id}}"><i class="bi bi-pencil-square"></i></h6>
   <a [routerLink]="['/recoverPassword']" class="me-3">Nueva contraseña</a>
   <a (click)="deleteUser()" class="me-3">Eliminar Cuenta</a>
 </div>

@@ -75,4 +75,26 @@ export class FormWineComponent implements OnInit {
       })
       .catch(error => console.log(error));
   }
+
+  async addWineCellar(form: any) {
+    try {
+      await this.wineCellarService.create(form.value)
+      this.wineCellars = await this.wineCellarService.getAll();
+      form.resetForm({})
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
+  async addOrigin(form: any) {
+    try {
+      console.log(form.value)
+      await this.originService.create(form.value)
+      this.origins = await this.originService.getAll();
+      form.resetForm({})
+    } catch (err) {
+      console.log(err)
+    }
+  }
 }

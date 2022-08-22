@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
 
   user: User | any;
   wines: Wine[];
-  form: FormGroup;
 
   constructor(
     private router: Router,
@@ -27,9 +26,6 @@ export class NavbarComponent implements OnInit {
     private wineHasUserService: WineHasUserService
   ) {
     this.wines = []
-    this.form = new FormGroup({
-      addWine: new FormControl('', [])
-    })
   }
 
   async ngOnInit(): Promise<void> {
@@ -49,10 +45,11 @@ export class NavbarComponent implements OnInit {
     this.loggedUser.emitUser()
   }
 
-  async onSubmit() {
+  async onSubmit(searchForm: any) {
     try {
-      const wine = await this.wineService.getByName(this.form.value.addWine)
+      const wine = await this.wineService.getByName(searchForm.value.addWine)
       this.wineHasUserService.create({ "Wine_id": wine.id, "User_id": this.user.id })
+      searchForm.resetForm({})
       this.router.navigate(['/home'])
     } catch (err) {
       console.log(err)

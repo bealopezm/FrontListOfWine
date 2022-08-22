@@ -18,6 +18,17 @@ export class UserService {
     );
   }
 
+  getById(pId: number): Promise<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.get<User>(`${this.baseUrl}/${pId}`, httpOptions)
+    );
+    return response
+  }
   getUserLoged(): Promise<User> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -58,6 +69,18 @@ export class UserService {
     }
     const response = lastValueFrom(
       this.httpClient.put<any>(`${this.baseUrl}/status/${pId}`, { isActive: pIsActive }, httpOptions)
+    );
+    return response
+  }
+
+  updateUser(pForm: any): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/${pForm.id}`, pForm, httpOptions)
     );
     return response
   }

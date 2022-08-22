@@ -29,8 +29,8 @@
         </li>-->
 
       </ul>
-      <form class="d-flex" role="search" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <input class="form-control me-2" list="wine" placeholder="Buscar vino ..." formControlName="addWine">
+      <form class="d-flex" role="search" #SearchForm="ngForm" (ngSubmit)="onSubmit(SearchForm)">
+        <input class="form-control me-2" list="wine" placeholder="Buscar vino ..." name="addWine" ngModel>
         <datalist id="wine">
           <option value="{{wine?.name}}" *ngFor="let wine of wines">
         </datalist>

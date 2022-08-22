@@ -8,11 +8,11 @@
       <label for="email" class="form-label">Email</label>
       <input type="text" class="form-control" formControlName="email">
     </div>
-    <div>
+    <div *ngIf="type === 'New'">
       <label for="password" class="form-label">Contraseña</label>
       <input type="password" class="form-control" formControlName="password" autocomplete="on">
     </div>
-    <div class="">
+    <div *ngIf="type === 'New'">
       <label for="controlPassword" class="form-label">Confirma la contraseña</label>
       <input type="password" id="controlPassword" class="form-control" placeholder="Repite la contraseña"
         formControlName="controlPassword" autocomplete="on">

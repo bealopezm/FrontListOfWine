@@ -35,4 +35,16 @@ export class WineCellarService {
     );
     return response
   }
+
+  create(pForm: any): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': localStorage.getItem('token')!
+      })
+    }
+    const response = lastValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}`, pForm, httpOptions)
+    );
+    return response
+  }
 }

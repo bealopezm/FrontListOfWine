@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'newUser', component: FormUserComponent },
   { path: 'updateUser', component: FormUserComponent },
+  { path: 'user/:id', component: FormUserComponent },
   { path: 'newWine', component: FormWineComponent },
   { path: 'updateWine', component: FormWineComponent },
   { path: 'user', component: InfoUserComponent },
