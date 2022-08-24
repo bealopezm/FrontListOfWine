@@ -18,25 +18,25 @@ export class UserService {
     );
   }
 
-  getById(pId: number): Promise<User> {
+  getById(pId: number): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': localStorage.getItem('token')!
       })
     }
     const response = lastValueFrom(
-      this.httpClient.get<User>(`${this.baseUrl}/${pId}`, httpOptions)
+      this.httpClient.get<any>(`${this.baseUrl}/${pId}`, httpOptions)
     );
     return response
   }
-  getUserLoged(): Promise<User> {
+  getUserLoged(): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': localStorage.getItem('token')!
       })
     }
     const response = lastValueFrom(
-      this.httpClient.get<User>(`${this.baseUrl}/userLoged/id`, httpOptions)
+      this.httpClient.get<any>(`${this.baseUrl}/userLoged/id`, httpOptions)
     );
     return response
   }

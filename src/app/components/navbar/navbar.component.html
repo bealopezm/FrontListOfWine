@@ -1,33 +1,16 @@
-<nav class="navbar navbar-expand-lg bg-light mb-3">
+<nav class="navbar navbar-expand-lg mb-3 h-95">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/home']">Inicio</a>
+    <a class="navbar-brand ms-3 nav" [routerLink]="['/home']"><img src=" ../../../assets/images/logo.png" alt=""
+        class="image"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="user.name">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/newWine']">Nuevo vino</a>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent" *ngIf="user.name">
+      <ul class="navbar-nav">
+        <li class="nav-item ms-4">
+          <a class="nav-link text-center text" routerLinkActive="active" [routerLink]="['/allWines']">Vinos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/allWines']">Todos los Vinos</a>
-        </li>
-
-        <!--         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>-->
-
       </ul>
       <form class="d-flex" role="search" #SearchForm="ngForm" (ngSubmit)="onSubmit(SearchForm)">
         <input class="form-control me-2" list="wine" placeholder="Buscar vino ..." name="addWine" ngModel>
@@ -38,10 +21,10 @@
       </form>
       <ul class="navbar-nav ms-4">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/user']">Perfil</a>
+          <a class="nav-link text-center text" routerLinkActive="active" [routerLink]="['/user']">Perfil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="onClickLogOut()">Cerrar sesión</a>
+          <a class="nav-link text-center text" (click)="onClickLogOut()" routerLinkActive="active">Cerrar sesión</a>
         </li>
       </ul>
     </div>

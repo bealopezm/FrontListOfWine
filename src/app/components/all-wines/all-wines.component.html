@@ -4,7 +4,10 @@
   </section>
 
   <section class="col-8">
-    <h2>Mi lista de vinos</h2>
+    <div class="d-flex justify-content-between">
+      <h2>Vinos</h2>
+      <a class="nav-link active" aria-current="page" [routerLink]="['/newWine']">Añadir vino</a>
+    </div>
     <article *ngFor="let wine of wines">
       <app-card-wine [miWine]="wine"></app-card-wine>
     </article>

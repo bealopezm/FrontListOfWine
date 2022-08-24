@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/user';
 import { LoggedUserService } from 'src/app/services/loggedUser.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
@@ -11,9 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  @Input() setUser!: (user: User) => void;
   form: FormGroup;
-  user: any;
   constructor(
     private userService: UserService,
     private router: Router,
@@ -31,7 +31,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['/listWine']);
+      this.userService.getUserLoged()
+        .then(response => {
+          this.router.navigate(['/listWine']);
+        })
+        .catch(error => console.log(error));
     }
   }
 
@@ -50,6 +54,8 @@ export class HomeComponent implements OnInit {
           response.err,
           'error'
         )
+        localStorage.removeItem('token');
+        this.router.navigate(['/home']);
       }
     } catch (err) {
       console.log(err)

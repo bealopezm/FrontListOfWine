@@ -9,20 +9,21 @@ import { InfoWineComponent } from './components/info-wine/info-wine.component';
 import { ListWineComponent } from './components/list-wine/list-wine.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
 
   { path: 'home', component: HomeComponent },
   { path: 'newUser', component: FormUserComponent },
-  { path: 'updateUser', component: FormUserComponent },
-  { path: 'user/:id', component: FormUserComponent },
-  { path: 'newWine', component: FormWineComponent },
-  { path: 'updateWine', component: FormWineComponent },
-  { path: 'user', component: InfoUserComponent },
-  { path: 'wine/:id', component: InfoWineComponent },
-  { path: 'listWine', component: ListWineComponent },
-  { path: 'allWines', component: AllWinesComponent },
+  { path: 'updateUser', component: FormUserComponent, canActivate: [AuthGuard] },
+  { path: 'user/:id', component: FormUserComponent, canActivate: [AuthGuard] },
+  { path: 'newWine', component: FormWineComponent, canActivate: [AuthGuard] },
+  { path: 'updateWine', component: FormWineComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: InfoUserComponent, canActivate: [AuthGuard] },
+  { path: 'wine/:id', component: InfoWineComponent, canActivate: [AuthGuard] },
+  { path: 'listWine', component: ListWineComponent, canActivate: [AuthGuard] },
+  { path: 'allWines', component: AllWinesComponent, canActivate: [AuthGuard] },
   { path: 'password/:token', component: NewPasswordComponent },
   { path: 'recoverPassword', component: RecoverPasswordComponent },
 

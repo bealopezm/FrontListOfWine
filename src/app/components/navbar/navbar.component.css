@@ -1,0 +1,42 @@
+.nav {
+  width: 10%;
+}
+
+.nav .image {
+  width: 100%;
+  margin-top: 1%;
+  margin-left: 3%;
+}
+
+.nav-item .text {
+  color: rgb(160, 32, 55);
+  cursor: pointer;
+}
+
+.nav-item .text:hover {
+  color: rgba(160, 32, 55, 0.375);
+}
+
+input {
+  border: 1px solid rgb(160, 32, 55);
+}
+
+input::placeholder {
+  color: #B5243E;
+}
+
+.form-control:focus {
+  border-color: rgba(160, 32, 55, 0.375);
+  box-shadow: 2px 2px 2px 2px rgba(160, 32, 55, 0.375);
+}
+
+.btn.btn-outline-success {
+  color: rgb(160, 32, 55);
+  border-color: rgb(160, 32, 55);
+}
+
+.btn.btn-outline-success:hover {
+  color: white;
+  border-color: rgb(160, 32, 55);
+  background-color: rgb(160, 32, 55);
+}
