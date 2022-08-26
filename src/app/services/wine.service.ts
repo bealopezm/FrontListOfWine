@@ -18,10 +18,9 @@ export class WineService {
         'authorization': localStorage.getItem('token')!
       })
     }
-    const response = lastValueFrom(
-      this.httpClient.get<Wine[]>(`${this.baseUrl}`, httpOptions)
+    return lastValueFrom(
+      this.httpClient.get<Wine[]>(this.baseUrl, httpOptions)
     );
-    return response
   }
 
   getById(pId: number): Promise<Wine> {
@@ -30,10 +29,9 @@ export class WineService {
         'authorization': localStorage.getItem('token')!
       })
     }
-    const response = lastValueFrom(
+    return lastValueFrom(
       this.httpClient.get<Wine>(`${this.baseUrl}/${pId}`, httpOptions)
     );
-    return response
   }
 
   getByName(name: string): Promise<any> {
@@ -42,21 +40,19 @@ export class WineService {
         'authorization': localStorage.getItem('token')!
       })
     }
-    const response = lastValueFrom(
+    return lastValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/name/${name}`, httpOptions)
     );
-    return response
   }
-  create(pForm: Wine): Promise<any> {
+  create(wine: FormData): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': localStorage.getItem('token')!
       })
     }
-    const response = lastValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}`, pForm, httpOptions)
+    return lastValueFrom(
+      this.httpClient.post<any>(this.baseUrl, wine, httpOptions)
     );
-    return response
   }
 
 }

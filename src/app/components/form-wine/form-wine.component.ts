@@ -21,6 +21,7 @@ export class FormWineComponent implements OnInit {
   types: Type[];
   wineCellars: WineCellar[];
   origins: Origin[];
+  files: any[];
   constructor(
     private wineService: WineService,
     private typeService: TypeService,
@@ -28,6 +29,7 @@ export class FormWineComponent implements OnInit {
     private originService: OriginService,
     private router: Router
   ) {
+    this.files = [];
     this.types = [];
     this.wineCellars = [];
     this.origins = [];
@@ -52,14 +54,20 @@ export class FormWineComponent implements OnInit {
   }
 
   onSubmit() {
-    const wine = {
-      name: this.form.value.name,
-      elaborationArea: this.form.value.elaborationArea,
-      photo: this.form.value.photo,
-      Origin_id: parseInt(this.form.value.Origin_id),
-      WineCellar_id: parseInt(this.form.value.WineCellar_id),
-      Type_id: parseInt(this.form.value.Type_id)
-    }
+    const { name, elaborationArea, Origin_id, WineCellar_id, Type_id } = this.form.value;
+
+    console.log(this.files[0])
+
+    const wine = new FormData();
+    wine.append('name', name);
+    wine.append('elaborationArea', elaborationArea);
+    wine.append('photo', this.files[0]);
+    wine.append('Origin_id', Origin_id);
+    wine.append('WineCellar_id', WineCellar_id);
+    wine.append('Type_id', Type_id);
+
+    console.log(wine)
+
     this.wineService.create(wine)
       .then(response => {
         if (response.message) {
@@ -96,5 +104,9 @@ export class FormWineComponent implements OnInit {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  addImage($event: any) {
+    this.files = $event.target.files;
   }
 }

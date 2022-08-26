@@ -1,0 +1,12 @@
+a.nav-link.text {
+  color: rgb(160, 32, 55);
+  cursor: pointer;
+}
+
+a.nav-link.text:hover {
+  color: rgba(160, 32, 55, 0.375);
+}
+
+h2 {
+  color: rgb(160, 32, 55);
+}

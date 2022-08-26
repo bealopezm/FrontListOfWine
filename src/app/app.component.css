@@ -1,0 +1,10 @@
+header {
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  height: 100vh;
+  right: 0%;
+  z-index: -12;
+}

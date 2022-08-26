@@ -1,0 +1,52 @@
+.container {
+  height: 65vh;
+  color: rgb(160, 32, 55);
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  z-index: -6;
+  height: 160%;
+}
+
+input {
+  border: 1px solid rgb(160, 32, 55);
+}
+
+input::placeholder {
+  color: rgba(160, 32, 55, 0.674);
+}
+
+.form-control:focus {
+  border-color: rgba(160, 32, 55, 0.375);
+  box-shadow: 2px 2px 2px 2px rgba(160, 32, 55, 0.375);
+}
+
+.btn.btn-outline-success {
+  color: rgb(160, 32, 55);
+  border-color: rgb(160, 32, 55);
+}
+
+.btn.btn-outline-success:hover {
+  color: white;
+  border-color: rgb(160, 32, 55);
+  background-color: rgb(160, 32, 55);
+}
+
+.btn.btn-outline-success:focus {
+  color: white;
+  border-color: rgb(160, 32, 55);
+  background-color: rgb(160, 32, 55);
+  box-shadow: 2px 2px 2px 2px rgba(160, 32, 55, 0.375);
+}
+
+div a {
+  text-decoration: none;
+  color: rgb(160, 32, 55);
+  cursor: pointer;
+}
+
+div a:hover {
+  color: rgba(160, 32, 55, 0.375);
+}

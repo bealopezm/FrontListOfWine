@@ -1,3 +1,67 @@
+.wine {
+  position: relative;
+}
+
 .icon {
   cursor: pointer;
+}
+
+.icon.favorite {
+  position: absolute;
+  top: 3%;
+  left: 8%;
+  color: rgb(160, 32, 55);
+}
+
+.icon.delete {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  color: rgb(160, 32, 55);
+}
+
+.add {
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  color: rgb(160, 32, 55);
+}
+
+.image {
+  height: 250px;
+  border-radius: 10px;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn.btn-outline-info {
+  color: #20A28A;
+  border-color: #20A28A;
+}
+
+.btn.btn-outline-info:hover {
+  color: white;
+  border-color: #20A28A;
+  background-color: #20A28A;
+}
+
+.btn.btn-outline-info:focus {
+  color: white;
+  border-color: #20A28A;
+  background-color: #20A28A;
+  box-shadow: 2px 2px 2px 2px #20a28a5c;
+}
+
+h5 {
+  color: rgb(160, 32, 55);
+}
+
+p {
+  color: #20A28A;
+  margin-left: 8%;
+  margin-bottom: 0;
 }
