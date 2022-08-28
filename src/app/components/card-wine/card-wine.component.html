@@ -1,12 +1,12 @@
-<div class="wine d-flex justify-content-around">
+<div class="wine d-flex justify-content-around mt-4">
   <img [src]="'http://localhost:3000/images/' + wine?.photo" class="image me-3" [alt]="wine?.name">
   <div class="contents mt-2">
-    <div class="">
-      <h5 class="">{{wine?.name}}</h5>
-      <p class="">{{wine?.type}}
-      <p class="">{{wine?.elaborationArea}}
-      <p class="">{{wine?.nameOrigin}}
-      <p class="">{{wine?.nameWineCellar}}
+    <div>
+      <h5>{{wine?.name}}</h5>
+      <p>{{wine?.type}}
+      <p>{{wine?.elaborationArea}}
+      <p>{{wine?.nameOrigin}}
+      <p>{{wine?.nameWineCellar}}
       </p>
     </div>
     <div class="d-flex justify-content-between" *ngIf="this.miWine.favorite !== undefined">

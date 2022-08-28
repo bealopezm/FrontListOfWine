@@ -1,22 +1,24 @@
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="name" class="form-label">Nombre</label>
+  <form novalidate class="row justify-content-center mt-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mt-3 col-12 col-lg-7">
+      <label for="name" class="form-label ms-2">Nombre</label>
       <input type="text" class="form-control" formControlName="name">
     </div>
-    <div>
-      <label for="email" class="form-label">Email</label>
+    <div class="mt-3 col-12 col-lg-7">
+      <label for="email" class="form-label ms-2">Email</label>
       <input type="text" class="form-control" formControlName="email">
     </div>
-    <div *ngIf="type === 'New'">
-      <label for="password" class="form-label">Contraseña</label>
+    <div *ngIf="type === 'New'" class="mt-3 col-12 col-lg-7">
+      <label for="password" class="form-label ms-2">Contraseña</label>
       <input type="password" class="form-control" formControlName="password" autocomplete="on">
     </div>
-    <div *ngIf="type === 'New'">
-      <label for="controlPassword" class="form-label">Confirma la contraseña</label>
-      <input type="password" id="controlPassword" class="form-control" placeholder="Repite la contraseña"
-        formControlName="controlPassword" autocomplete="on">
+    <div *ngIf="type === 'New'" class="mt-3 col-12 col-lg-7">
+      <label for="controlPassword" class="form-label ms-2">Confirmar contraseña</label>
+      <input type="password" id="controlPassword" class="form-control" formControlName="controlPassword"
+        autocomplete="on">
     </div>
-    <button type="submit" class="btn">Enviar</button>
+    <div class="mt-4 col-12 col-lg-7 d-flex justify-content-center">
+      <button type="submit" class="btn btn-outline-info" [disabled]="!form.valid">Aceptar</button>
+    </div>
   </form>
 </div>

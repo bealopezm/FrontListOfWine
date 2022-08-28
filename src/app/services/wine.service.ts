@@ -44,7 +44,7 @@ export class WineService {
       this.httpClient.get<any>(`${this.baseUrl}/name/${name}`, httpOptions)
     );
   }
-  create(wine: FormData): Promise<any> {
+  create(wine: FormData) {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': localStorage.getItem('token')!

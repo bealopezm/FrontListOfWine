@@ -1,0 +1,61 @@
+.btn.btn-outline-info {
+  color: rgb(160, 32, 55);
+  border-color: rgb(160, 32, 55);
+}
+
+.btn.btn-outline-info:hover {
+  color: white;
+  border-color: rgb(160, 32, 55);
+  background-color: rgb(160, 32, 55);
+}
+
+.btn.btn-outline-info:focus {
+  color: white;
+  border-color: rgb(160, 32, 55);
+  background-color: rgb(160, 32, 55);
+  box-shadow: 2px 2px 2px 2px rgba(160, 32, 55, 0.375);
+}
+
+.btn.btn-secondary {
+  background-color: #e9ecef;
+  color: black;
+  border-color: rgb(160, 32, 55);
+}
+
+.btn.btn-secondary:hover {
+  background-color: #ced4da;
+  ;
+}
+
+.btn.btn-secondary:focus {
+  color: white;
+  border-color: rgb(160, 32, 55);
+  background-color: rgb(160, 32, 55);
+  box-shadow: 2px 2px 2px 2px rgba(160, 32, 55, 0.375);
+}
+
+input {
+  border-color: rgb(160, 32, 55);
+}
+
+.form-control:focus {
+  border-color: rgba(160, 32, 55, 0.375);
+  box-shadow: 2px 2px 2px 2px rgba(160, 32, 55, 0.375);
+}
+
+input::placeholder {
+  color: #20A28A;
+}
+
+select {
+  border-color: rgb(160, 32, 55);
+}
+
+select,
+option {
+  color: #20A28A;
+}
+
+input[type=file] {
+  color: #20A28A;
+}

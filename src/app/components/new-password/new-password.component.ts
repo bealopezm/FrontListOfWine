@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
@@ -18,16 +18,26 @@ export class NewPasswordComponent implements OnInit {
     private router: Router
   ) {
     this.form = new FormGroup({
-      password: new FormControl('', [])
-    })
+      password: new FormControl('', [
+        Validators.minLength(4)
+      ]),
+      controlPassword: new FormControl('', []),
+    }, [this.passwordValidator])
   }
 
   ngOnInit(): void {
   }
+  passwordValidator(form: AbstractControl) {
+    const passwordValue = form.get('password')?.value
+    const confirmPasswordValue = form.get('controlPassword')?.value
 
+    if (passwordValue !== confirmPasswordValue) {
+      return { passwordvalidator: true }
+    }
+    return null
+  }
   onSubmit() {
     delete this.form.value.controlPassword
-    console.log(this.form.value)
     this.activatedRoute.params.subscribe(params => {
       this.userService.updatePassword(params['token'], this.form.value)
         .then(response => {
@@ -44,6 +54,14 @@ export class NewPasswordComponent implements OnInit {
         })
         .catch(error => console.log(error));
     })
+  }
+
+  checkControl(controlName: string, errorName: string): boolean {
+    if (this.form.get(controlName)?.hasError(errorName) && this.form.get(controlName)?.touched) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

@@ -28,11 +28,13 @@
 }
 
 .image {
-  height: 250px;
+  width: 15vh;
+  height: 25vh;
   border-radius: 10px;
 }
 
 .contents {
+  width: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
