@@ -56,8 +56,6 @@ export class FormWineComponent implements OnInit {
   onSubmit() {
     const { name, elaborationArea, Origin_id, WineCellar_id, Type_id } = this.form.value;
 
-    console.log(this.files[0])
-
     const wine = new FormData();
     wine.append('name', name);
     wine.append('elaborationArea', elaborationArea);
@@ -66,13 +64,11 @@ export class FormWineComponent implements OnInit {
     wine.append('WineCellar_id', WineCellar_id);
     wine.append('Type_id', Type_id);
 
-    console.log(wine)
-
     this.wineService.create(wine)
       .then(response => {
         if (response.message) {
           Swal.fire(response.message)
-          this.router.navigate(['/home'])
+          this.router.navigate(['/allWines'])
         } else {
           Swal.fire(
             'Oops...',

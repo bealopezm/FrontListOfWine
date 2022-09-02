@@ -33,7 +33,8 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.userService.getUserLoged()
         .then(response => {
-          this.router.navigate(['/listWine']);
+          this.routerNavigate(response);
+          console.log('Hola')
         })
         .catch(error => console.log(error));
     }
@@ -46,7 +47,10 @@ export class HomeComponent implements OnInit {
         localStorage.setItem('token', response.token);
         const user = await this.userService.getUserLoged()
         this.loggedUser.emitUser(user)
-        this.router.navigate(['/listWine']);
+        console.log('Hola4')
+        console.log(user)
+        this.routerNavigate(user);
+        console.log('Hola3')
       }
       if (response.err) {
         Swal.fire(
@@ -54,11 +58,21 @@ export class HomeComponent implements OnInit {
           response.err,
           'error'
         )
-        localStorage.removeItem('token');
-        this.router.navigate(['/home']);
       }
     } catch (err) {
       console.log(err)
     }
+  }
+
+  routerNavigate(user: any) {
+    console.log(user)
+    if (user.role === 'Admin') {
+      console.log('Hola1')
+      this.router.navigate(['/allWines'])
+    } else if (user.role === 'User') {
+      console.log('Hola2')
+      this.router.navigate(['/listWine'])
+    }
+
   }
 }

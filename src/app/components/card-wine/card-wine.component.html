@@ -1,6 +1,6 @@
-<div class="wine d-flex justify-content-around mt-4">
+<div class="wine d-flex justify-content-around mt-5">
   <img [src]="'http://localhost:3000/images/' + wine?.photo" class="image me-3" [alt]="wine?.name">
-  <div class="contents mt-2">
+  <div class="contents mt-2 flex-fill">
     <div>
       <h5>{{wine?.name}}</h5>
       <p>{{wine?.type}}
@@ -14,7 +14,9 @@
       <i class="icon favorite {{favorite}}" (click)="isFavorite()"></i>
       <i class="icon delete bi bi-trash3" (click)="delete()"></i>
     </div>
-    <button class="btn btn-outline-info" [routerLink]="['/wine', wine?.id]">Ver mas</button>
+    <div class="d-flex justify-content-center mt-2">
+      <button class="btn btn-outline-info" [routerLink]="['/wine', wine?.id]">Ver mas</button>
+    </div>
     <p class="add"><i class="bi bi-patch-plus h3 icon" *ngIf="this.miWine.favorite === undefined"
         (click)=onSubmit()></i></p>
   </div>

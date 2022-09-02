@@ -9,26 +9,26 @@
 .icon.favorite {
   position: absolute;
   top: 3%;
-  left: 8%;
+  left: 5%;
   color: rgb(160, 32, 55);
 }
 
 .icon.delete {
   position: absolute;
-  top: 3%;
-  right: 3%;
+  bottom: 0%;
+  right: 0%;
   color: rgb(160, 32, 55);
 }
 
 .add {
   position: absolute;
-  top: 2%;
-  right: 3%;
+  top: -15%;
+  right: -2%;
   color: rgb(160, 32, 55);
 }
 
 .image {
-  width: 15vh;
+  width: 18vh;
   height: 25vh;
   border-radius: 10px;
 }
