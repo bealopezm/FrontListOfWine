@@ -1,22 +1,33 @@
 <h6>Filtros</h6>
-<div>
-  <!--   <p>Nombre (wine)</p> -->
-</div>
-<div>
-  <!--   <p>Tipo option</p> -->
-</div>
-<div>
-  <!--   <p>Lugar (wine)</p> -->
-</div>
-<div>
-  <!--   <p>D.O. option</p> -->
-</div>
-<div>
-  <!--   <p>Bodega option</p> -->
-</div>
-<div>
-  <!--   <p>Catado (wine-has-user)</p> -->
-</div>
-<div>
-  <!--   <p>Favorito (wine-has-user)</p> -->
-</div>
+<form [formGroup]="filters" (ngSubmit)="getFilters()">
+  <div>
+    <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
+  </div>
+  <div>
+    <select class="form-control" formControlName="Type_id">
+      <option value="">Seleccione el tipo de vino</option>
+      <option *ngFor="let type of types" value={{type.id}}>{{type?.name}}</option>
+    </select>
+  </div>
+  <div>
+    <input type="text" class="form-control" placeholder="Zona de elaboración" formControlName="elaborationArea">
+  </div>
+  <div>
+    <select class="form-control" formControlName="Origin_id">
+      <option value="" selected>Seleccione la Denominacion de Origen</option>
+      <option *ngFor="let origin of origins" value={{origin.id}}>{{origin?.name}}</option>
+    </select>
+  </div>
+  <div>
+    <select class="form-control" formControlName="WineCellar_id">
+      <option value="" selected>Seleccione la Bodega</option>
+      <option *ngFor="let wineCellar of wineCellars" value={{wineCellar.id}}>{{wineCellar?.name}}</option>
+    </select>
+  </div>
+  <div>
+    <!--   <p>Catado (wine-has-user)</p> -->
+  </div>
+  <div>
+    <!--   <p>Favorito (wine-has-user)</p> -->
+  </div>
+</form>
