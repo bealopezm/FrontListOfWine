@@ -1,4 +1,7 @@
-<div class="container d-flex justify-content-center align-items-center col-12">
+<div class="text-center" *ngIf="loading">
+  <img src="https://aserta.com.es/wp-content/themes/aserta_theme/img/loading-image.gif">
+</div>
+<div *ngIf="!loading && !token" class="container d-flex justify-content-center align-items-center col-12">
   <img class="image" src="../../../assets/images/vino_6.jpg" alt="">
   <form class="col-8 col-lg-4" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>

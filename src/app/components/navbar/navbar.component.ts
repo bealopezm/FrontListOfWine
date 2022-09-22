@@ -32,8 +32,12 @@ export class NavbarComponent implements OnInit {
     try {
       this.loggedUser.user.subscribe(user => this.user = user)
       const user = await this.userService.getUserLoged();
+      console.log(user)
       this.loggedUser.emitUser(user)
-      this.wines = await this.wineService.getAll();
+      if (user) {
+        this.wines = await this.wineService.getAll();
+        console.log(this.wines)
+      }
     } catch (err) {
       console.log(err)
     }

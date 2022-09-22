@@ -14,11 +14,15 @@ import Swal from 'sweetalert2';
 export class HomeComponent implements OnInit {
   @Input() setUser!: (user: User) => void;
   form: FormGroup;
+  loading: boolean;
+  token: string | null;
   constructor(
     private userService: UserService,
     private router: Router,
     private loggedUser: LoggedUserService
   ) {
+    this.loading = false;
+    this.token = localStorage.getItem('token');
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.required
@@ -31,10 +35,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
+      this.loading = true;
       this.userService.getUserLoged()
         .then(response => {
           this.routerNavigate(response);
-          console.log('Hola')
         })
         .catch(error => console.log(error));
     }
@@ -47,10 +51,8 @@ export class HomeComponent implements OnInit {
         localStorage.setItem('token', response.token);
         const user = await this.userService.getUserLoged()
         this.loggedUser.emitUser(user)
-        console.log('Hola4')
         console.log(user)
         this.routerNavigate(user);
-        console.log('Hola3')
       }
       if (response.err) {
         Swal.fire(
@@ -67,11 +69,11 @@ export class HomeComponent implements OnInit {
   routerNavigate(user: any) {
     console.log(user)
     if (user.role === 'Admin') {
-      console.log('Hola1')
       this.router.navigate(['/allWines'])
+      this.loading = false;
     } else if (user.role === 'User') {
-      console.log('Hola2')
       this.router.navigate(['/listWine'])
+      this.loading = false;
     }
 
   }

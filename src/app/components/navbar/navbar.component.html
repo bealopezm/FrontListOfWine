@@ -12,7 +12,8 @@
           <a class="nav-link text-center text" routerLinkActive="active" [routerLink]="['/allWines']">Vinos</a>
         </li>
       </ul>
-      <form class="d-flex" role="search" #SearchForm="ngForm" (ngSubmit)="onSubmit(SearchForm)">
+      <form class="d-flex" role="search" #SearchForm="ngForm" (ngSubmit)="onSubmit(SearchForm)"
+        *ngIf="user.role !== 'Admin'">
         <input class="form-control me-2" list="wine" placeholder="Buscar vino ..." name="addWine" ngModel>
         <datalist id="wine">
           <option value="{{wine?.name}}" *ngFor="let wine of wines">
